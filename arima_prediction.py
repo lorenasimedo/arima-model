@@ -5,17 +5,17 @@ from statsmodels.tsa.arima_model import ARIMA
 def arima(serie_list):
     train = serie_list
     size = len(train)
-    model = ARIMA(train, order=(2, 1, 1))
-    model_fit = model.fit(disp=0)
+    model = ARIMA(train, order=(0, 0, 0))
+    model_fit = model.fit(disp=False)
     output = model_fit.forecast()
     prediction = output[0]
     return prediction
 
 
 def main():
-    extract_access_frequence_list = [1, 2, 1, 2, 1, 2, 1, 2]
+    extract_access_frequence_list = [1.0, 2.0, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0]
     last_access = date.today()
-    predicition = arima(extract_access_frequence_list)
+    prediction = arima(extract_access_frequence_list)
     print("Prediction: {}".format(prediction))
 
 
